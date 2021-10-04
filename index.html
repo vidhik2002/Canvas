@@ -23,8 +23,8 @@
 </head>
 <body>
     
-    <input type="color" style="z-index:2; margin-bottom: 5px;" onchange="choose()">
-    <input type="number" style="z-index:2; margin-bottom: 5px;" onchange="choose()">
+    <input type="color" id="color" style="z-index:2; margin-bottom: 5px;" onchange="choose()">
+    <input type="number" id="stroke" style="z-index:2; margin-bottom: 5px;" onchange="choose()">
     <input type="button" style="z-index:2; margin-bottom: 5px;" value="Clear" onclick="clearAll()">
     <button onclick="myFunction()" style="z-index:2; margin-bottom: 5px;">switch</button>
     <canvas id="canvas"></canvas>
@@ -33,6 +33,8 @@
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
         var ctx = canvas.getContext("2d");
+        
+        //function to change theme
         function myFunction() {     
             if (ctx.fillStyle == "#000000"){
                 ctx.fillStyle = "white"
@@ -41,6 +43,22 @@
             };
             ctx.fillRect(0, 0, canvas.width, canvas.height)
         }
+
+        //function to choose color and color
+        function choose() {
+            var chooseColor = document.getElementById("color").value;
+            var chooseStroke = document.getElementById("stroke").value;
+
+            return {
+                chooseColor,chooseStroke
+            };
+        }
+
+        //function to clear the canvas
+        function clearAll(){
+            canvas.width = canvas.width;
+        }
+
     </script> 
 </body>
 </html
