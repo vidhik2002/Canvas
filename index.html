@@ -29,6 +29,7 @@
     <button onclick="myFunction()" style="z-index:2; margin-bottom: 5px;">switch</button>
     <!-- <button (click)="saveCanvasData()">Save</button> -->
     <button id="save-canvas">Save</button>
+    <a id="download" download="myImage.jpg" href="" onclick="download_img(this);">Download to myImage.jpg</a>
     <canvas id="canvas"></canvas>
     <script type="text/javascript">
         var canvas = document.getElementById("canvas");
@@ -93,6 +94,10 @@
         // document.getElementById("save-canvas").addEventListener("click",function(){
         //     saveCanvas(canvas, "sketch", "png");
         // });
+        download_img = function(el) {
+            var image = canvas.toDataURL("image/jpg");
+            el.href = image;
+        };
         canvas.addEventListener("mousedown", startDraw);
         canvas.addEventListener("mouseup", overDraw);
         canvas.addEventListener("mousemove", draw);
