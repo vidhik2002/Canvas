@@ -27,6 +27,8 @@
     <input type="number" id="stroke" style="z-index:2; margin-bottom: 5px;" onchange="choose()">
     <input type="button" style="z-index:2; margin-bottom: 5px;" value="Clear" onclick="clearAll()">
     <button onclick="myFunction()" style="z-index:2; margin-bottom: 5px;">switch</button>
+    <!-- <button (click)="saveCanvasData()">Save</button> -->
+    <button id="save-canvas">Save</button>
     <canvas id="canvas"></canvas>
     <script type="text/javascript">
         var canvas = document.getElementById("canvas");
@@ -50,7 +52,8 @@
             var chooseStroke = document.getElementById("stroke").value;
 
             return {
-                chooseColor,chooseStroke
+                chooseColor,
+                chooseStroke
             };
         }
 
@@ -58,7 +61,41 @@
         function clearAll(){
             canvas.width = canvas.width;
         }
+        
+        function draw(e) {
+            if (drawing == false) return;
+            ctx.lineWidth = 10; //default stroke width
+            ctx.strokeStyle = "red";	
+            let editor = choose();
+            ctx.lineWidth = editor.chooseStroke;
+            ctx.strokeStyle = editor.chooseColor;	
+            ctx.lineCap ="round";
+            // ctx.restore();
+            ctx.lineTo(e.clientX, e.clientY);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.moveTo(e.clientX, e.clientY);
+            
+        }
 
+        function startDraw(e) {
+            drawing = true;
+            draw(e);
+        }
+
+        function overDraw() {
+            drawing = false;
+            ctx.beginPath();
+        }    
+        // function saveCanvasData() {
+        //     ctx.save()
+        // }   
+        // document.getElementById("save-canvas").addEventListener("click",function(){
+        //     saveCanvas(canvas, "sketch", "png");
+        // });
+        canvas.addEventListener("mousedown", startDraw);
+        canvas.addEventListener("mouseup", overDraw);
+        canvas.addEventListener("mousemove", draw);
     </script> 
 </body>
 </html
