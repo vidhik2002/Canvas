@@ -26,8 +26,9 @@
         <input type="color" value="color" id="color" style="z-index:2; margin-bottom: 5px;" onchange="choose()">
         <input type="number" id="stroke" placeholder="Enter stroke size" style="z-index:2; margin-bottom: 5px;" onchange="choose()">
         <input type="button" style="z-index:2; margin-bottom: 5px;" value="Clear" onclick="clearAll()">
+        <button class="download" onclick="downloadCanvas()">Download Me!</button>
         <!-- <button onclick="myFunction()" style="z-index:2; margin-bottom: 5px;">Switch Theme</button> -->
-        <button class="download"><a id="download" download="myImage.jpg" href="" onclick="download_img(this);"></a>Download</button>
+        <!-- <button class="download"><a id="download" download="myImage.jpg" href="" onclick="download_img(this);"></a>Download</button> -->
         <input type="file" id="imageLoader" name="imageLoader"/>
         <canvas id="canvas""></canvas>
     </div>
@@ -114,10 +115,21 @@
             ctx.beginPath();
         }    
     
-        download_img = function(el) {
-            var image = canvas.toDataURL("image/jpg");
-            el.href = image;
-        };
+      
+        function downloadCanvas(){  
+            // get canvas data  
+            var image = canvas.toDataURL();  
+        
+            // create temporary link  
+            var tmpLink = document.createElement( 'a' );  
+            tmpLink.download = 'image.png'; // set the name of the download file 
+            tmpLink.href = image;  
+        
+            // temporarily add link to body and initiate the download  
+            document.body.appendChild( tmpLink );  
+            tmpLink.click();  
+            document.body.removeChild( tmpLink );  
+        }
 
         function handleImage(e){
             var reader = new FileReader();
