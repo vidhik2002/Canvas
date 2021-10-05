@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
-  res.render("main.html");
+  res.render("index.html");
 });
 
 app.listen(3000, () => {

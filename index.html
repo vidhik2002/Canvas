@@ -29,7 +29,7 @@
         <!-- <button onclick="myFunction()" style="z-index:2; margin-bottom: 5px;">Switch Theme</button> -->
         <button class="download"><a id="download" download="myImage.jpg" href="" onclick="download_img(this);"></a>Download</button>
         <input type="file" id="imageLoader" name="imageLoader"/>
-        <canvas id="canvas"></canvas>
+        <canvas id="canvas""></canvas>
     </div>
     <script type="text/javascript">
         var canvas = document.getElementById("canvas");
@@ -39,6 +39,7 @@
         imageLoader.addEventListener('change', handleImage, false);
         var ctx = canvas.getContext("2d");
         let drawing = false
+
         //function to change theme
         function myFunction() {     
             if (ctx.fillStyle == "#000000"){
@@ -48,6 +49,20 @@
             };
             ctx.fillRect(0, 0, canvas.width, canvas.height)
         }
+
+        var mouse = {x: 0, y: 0};
+        var last_mouse = {x: 0, y: 0};
+
+        /* Mouse Capturing Work */
+        canvas.addEventListener('mousemove', function(e) {
+            last_mouse.x = mouse.x;
+            last_mouse.y = mouse.y;
+
+            mouse.x = e.pageX - this.offsetLeft;
+            mouse.y = e.pageY - this.offsetTop;
+        }, false);
+
+
 
         //function to choose color and color
         function choose() {
@@ -67,18 +82,25 @@
         
         function draw(e) {
             if (drawing == false) return;
-            ctx.lineWidth = 10; //default stroke width
+            // ctx.lineWidth = 10; //default stroke width
             ctx.strokeStyle = "red";	
             let editor = choose();
             ctx.lineWidth = editor.chooseStroke;
             ctx.strokeStyle = editor.chooseColor;	
             ctx.lineCap ="round";
-    
-            ctx.lineTo(e.clientX, e.clientY);
+            ctx.lineJoin = 'round';
             ctx.stroke();
-            ctx.beginPath();
+            ctx.lineTo(e.clientX, e.clientY);
             ctx.moveTo(e.clientX, e.clientY);
-            ctx.save()
+            ctx.beginPath();
+
+
+            // ctx.lineTo(e.clientX, e.clientY);
+            // ctx.moveTo(e.clientX, e.clientY);
+            // ctx.stroke();
+    
+            
+
         }
         
 
@@ -96,6 +118,7 @@
             var image = canvas.toDataURL("image/jpg");
             el.href = image;
         };
+
         function handleImage(e){
             var reader = new FileReader();
             reader.onload = function(event){
@@ -110,7 +133,21 @@
             reader.readAsDataURL(e.target.files[0]);     
         }
         
-        
+        canvas.addEventListener('mousedown', function(e) {
+            canvas.addEventListener('mousemove', onPaint, false);
+        }, false);
+
+        canvas.addEventListener('mouseup', function() {
+            canvas.removeEventListener('mousemove', onPaint, false);
+        }, false);
+
+        var onPaint = function() {
+            ctx.beginPath();
+            ctx.moveTo(last_mouse.x, last_mouse.y);
+            ctx.lineTo(mouse.x, mouse.y);
+            ctx.closePath();
+            ctx.stroke();
+        };
     
         canvas.addEventListener("mousedown", startDraw);
         canvas.addEventListener("mouseup", overDraw);
