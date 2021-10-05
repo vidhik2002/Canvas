@@ -30,11 +30,15 @@
     <!-- <button (click)="saveCanvasData()">Save</button> -->
     <button id="save-canvas">Save</button>
     <a id="download" download="myImage.jpg" href="" onclick="download_img(this);">Download to myImage.jpg</a>
+    <input type="file" id="imageLoader" name="imageLoader"/>
     <canvas id="canvas"></canvas>
     <script type="text/javascript">
         var canvas = document.getElementById("canvas");
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
+        var imageLoader = document.getElementById('imageLoader');
+        imageLoader.addEventListener('change', handleImage, false);
+
         var ctx = canvas.getContext("2d");
         
         //function to change theme
@@ -98,6 +102,19 @@
             var image = canvas.toDataURL("image/jpg");
             el.href = image;
         };
+        function handleImage(e){
+            var reader = new FileReader();
+            reader.onload = function(event){
+                var img = new Image();
+                img.onload = function(){
+                    canvas.width = img.width;
+                    canvas.height = img.height;
+                    ctx.drawImage(img,0,0);
+                }
+                img.src = event.target.result;
+            }
+            reader.readAsDataURL(e.target.files[0]);     
+        }
         canvas.addEventListener("mousedown", startDraw);
         canvas.addEventListener("mouseup", overDraw);
         canvas.addEventListener("mousemove", draw);
