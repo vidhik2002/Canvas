@@ -19,26 +19,24 @@
             background-color:black;
         }
         </style>
-        
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    
-    <input type="color" id="color" style="z-index:2; margin-bottom: 5px;" onchange="choose()">
-    <input type="number" id="stroke" style="z-index:2; margin-bottom: 5px;" onchange="choose()">
-    <input type="button" style="z-index:2; margin-bottom: 5px;" value="Clear" onclick="clearAll()">
-    <button onclick="myFunction()" style="z-index:2; margin-bottom: 5px;">switch</button>
-    <!-- <button (click)="saveCanvasData()">Save</button> -->
-    <button id="save-canvas">Save</button>
-    <a id="download" download="myImage.jpg" href="" onclick="download_img(this);">Download to myImage.jpg</a>
-    <input type="file" id="imageLoader" name="imageLoader"/>
-    <canvas id="canvas"></canvas>
+    <div>
+        <input type="color" value="color" id="color" style="z-index:2; margin-bottom: 5px;" onchange="choose()">
+        <input type="number" id="stroke" style="z-index:2; margin-bottom: 5px;" onchange="choose()">
+        <input type="button" style="z-index:2; margin-bottom: 5px;" value="Clear" onclick="clearAll()">
+        <button onclick="myFunction()" style="z-index:2; margin-bottom: 5px;">switch</button>
+        <button><a id="download" download="myImage.jpg" href="" onclick="download_img(this);"></a>Download</button>
+        <button><input type="file" id="imageLoader" name="imageLoader"/></button>
+        <canvas id="canvas"></canvas>
+    </div>
     <script type="text/javascript">
         var canvas = document.getElementById("canvas");
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
         var imageLoader = document.getElementById('imageLoader');
         imageLoader.addEventListener('change', handleImage, false);
-
         var ctx = canvas.getContext("2d");
         
         //function to change theme
@@ -75,13 +73,14 @@
             ctx.lineWidth = editor.chooseStroke;
             ctx.strokeStyle = editor.chooseColor;	
             ctx.lineCap ="round";
-            // ctx.restore();
+    
             ctx.lineTo(e.clientX, e.clientY);
             ctx.stroke();
             ctx.beginPath();
             ctx.moveTo(e.clientX, e.clientY);
-            
+            ctx.save()
         }
+        
 
         function startDraw(e) {
             drawing = true;
@@ -92,12 +91,7 @@
             drawing = false;
             ctx.beginPath();
         }    
-        // function saveCanvasData() {
-        //     ctx.save()
-        // }   
-        // document.getElementById("save-canvas").addEventListener("click",function(){
-        //     saveCanvas(canvas, "sketch", "png");
-        // });
+    
         download_img = function(el) {
             var image = canvas.toDataURL("image/jpg");
             el.href = image;
@@ -115,9 +109,11 @@
             }
             reader.readAsDataURL(e.target.files[0]);     
         }
+    
         canvas.addEventListener("mousedown", startDraw);
         canvas.addEventListener("mouseup", overDraw);
         canvas.addEventListener("mousemove", draw);
+    
     </script> 
 </body>
 </html
