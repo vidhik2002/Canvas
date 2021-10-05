@@ -16,7 +16,7 @@
             display: none;
         }
         canvas {
-            background-color:black;
+            background-color:rgb(255, 255, 255);
         }
         </style>
     <link rel="stylesheet" href="index.css">
@@ -26,8 +26,8 @@
         <input type="color" value="color" id="color" style="z-index:2; margin-bottom: 5px;" onchange="choose()">
         <input type="number" id="stroke" placeholder="Enter stroke size" style="z-index:2; margin-bottom: 5px;" onchange="choose()">
         <input type="button" style="z-index:2; margin-bottom: 5px;" value="Clear" onclick="clearAll()">
-        <button onclick="myFunction()" style="z-index:2; margin-bottom: 5px;">Switch Theme</button>
-        <button><a id="download" download="myImage.jpg" href="" onclick="download_img(this);"></a>Download</button>
+        <!-- <button onclick="myFunction()" style="z-index:2; margin-bottom: 5px;">Switch Theme</button> -->
+        <button class="download"><a id="download" download="myImage.jpg" href="" onclick="download_img(this);"></a>Download</button>
         <input type="file" id="imageLoader" name="imageLoader"/>
         <canvas id="canvas"></canvas>
     </div>
@@ -109,10 +109,13 @@
             }
             reader.readAsDataURL(e.target.files[0]);     
         }
+        
+        
     
         canvas.addEventListener("mousedown", startDraw);
         canvas.addEventListener("mouseup", overDraw);
         canvas.addEventListener("mousemove", draw);
+        
     
     </script> 
 </body>
