@@ -25,7 +25,6 @@
     <div>
         <input type="color" value="color" id="color" style="z-index:2; margin-bottom: 5px;" onchange="choose()">
         <input type="number" id="stroke" placeholder="Enter stroke size" style="z-index:2; margin-bottom: 5px;" onchange="choose()">
-        <!-- <input type="button" style="z-index:2; margin-bottom: 5px;" value="Style" onclick="chooseType()"> -->
         <input type="button" style="z-index:2; margin-bottom: 5px;" value="Clear" onclick="clearAll()">
         <input type="color" value="color" id="color2" style="z-index:2; margin-bottom: 5px;" onchange="myFunction()">        
         <button class="download" onclick="downloadCanvas()">Download Me!</button>
@@ -39,17 +38,8 @@
         var imageLoader = document.getElementById('imageLoader');
         imageLoader.addEventListener('change', handleImage, false);
         var ctx = canvas.getContext("2d");
-        var commands = [];
         let drawing = false
 
-        // function myFunction() {     
-        //     if (ctx.fillStyle == "#000000"){
-        //         ctx.fillStyle = "white"
-        //     }else{
-        //         ctx.fillStyle = "black"
-        //     };
-        //     ctx.fillRect(0, 0, canvas.width, canvas.height)
-        // }
         function myFunction() {     
             var chooseColor2 = document.getElementById("color2").value;
             console.log(chooseColor2)
@@ -57,22 +47,6 @@
             ctx.fillRect(0, 0, canvas.width, canvas.height)
         }
 
-        function execute() {
-        var commandType = arguments[0];
-        var data = Array.prototype.slice.call(arguments, 1);
-        
-        if (!commandTypes.hasOwnProperty(commandType))
-            throw new Error(commandType + ' is not a real command');
-
-        commandTypes[commandType].apply(null, data);
-        
-        }
-        // function pushAndExecute() {
-        // commands.push(arguments);
-        // execute.apply(null, arguments);
-        // }
-    
-        
 
         var mouse = {x: 0, y: 0};
         var last_mouse = {x: 0, y: 0};
@@ -124,8 +98,6 @@
             ctx.lineTo(e.clientX, e.clientY);
             ctx.moveTo(e.clientX, e.clientY);
             ctx.beginPath();
-            commands.push(arguments);
-            execute.apply(null, arguments);
 
             // ctx.lineTo(e.clientX, e.clientY);
             // ctx.moveTo(e.clientX, e.clientY);
@@ -190,29 +162,11 @@
             ctx.lineTo(mouse.x, mouse.y);
             ctx.closePath();
             ctx.stroke();
-            commands.push(arguments);
-            execute.apply(null, arguments);
         };
-        function handleKeys(e) {
-            if (e.ctrlKey && e.key === 'z') {
-                // console.log('undo');
 
-                // Remove the most recent command from the list
-                commands.splice(-1, 1);
-
-                // Clear canvas
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-                // Re-play all commands (re-draw canvas from scratch)
-                commands.forEach(function (command) {
-                execute.apply(null, command);
-                });
-            }
-            }
         canvas.addEventListener("mousedown", startDraw);
         canvas.addEventListener("mouseup", overDraw);
         canvas.addEventListener("mousemove", draw);
-        window.addEventListener('keydown', handleKeys);
     
     </script> 
 </body>
