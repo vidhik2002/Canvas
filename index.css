@@ -33,6 +33,10 @@ div {
     align-items: center;
     flex-wrap: wrap;
 }
+h2 {
+    color: rgb(255, 255, 255);
+     font-size: 30px;
+}
 button,input {
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     background-color: #7a4caf; /* Green */
