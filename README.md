@@ -5,6 +5,7 @@
 
 * []() Choose any Color
 * []() Choose any stroke width
+* []() Background Fill
 * []() Download your work
 * []() Upload ur work from local PC and edit it
  
