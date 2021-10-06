@@ -19,7 +19,7 @@ git clone https://github.com/vidhik2002/Canvas.git
 ```sh
 cd Canvas
 ```
-3. Run
+3. Run the commands
 ```sh
 npm i
 nodemon index.js
