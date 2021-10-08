@@ -4,7 +4,7 @@ A canvas to draw using HTML5 and Canvas API !
 #### Pre-requisite
 - [Node.js](https://nodejs.org/en/)
 - [npm](https://www.npmjs.com/)
-- 
+
 #### Features
 
 * []() Choose any Color
