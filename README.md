@@ -31,6 +31,6 @@ npm install -g npm@latest
 npm i
 nodemon index.js
 ```
-![Vidhi's GitHub stats](https://github-readme-stats.vercel.app/api?username=vidhik2002&show_icons=true&theme=tokyonight&include_all_commits=true&count_private=true)
+
 
 
