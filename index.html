@@ -49,7 +49,7 @@
         <h2>CANVAS</h2>
  
         <input class="tooltip" title="Choose Colour" type="color" value="color" id="color" style="z-index:2; margin-bottom: 5px;" onchange="choose()">
-        <input type="number" title="Enter Stroke Width" id="stroke" placeholder="Enter stroke size" style="z-index:2; margin-bottom: 5px;" onchange="choose()">
+        <input type="number" min="1" title="Enter Stroke Width" id="stroke" placeholder="Enter stroke size" style="z-index:2; margin-bottom: 5px;" onchange="choose()">
         <input type="button" title="Clear Canvas" style="z-index:2; margin-bottom: 5px;" value="Clear" onclick="clearAll()">
         <input type="color" title="Choose Background Colour" value="color" id="color2" style="z-index:2; margin-bottom: 5px;" onchange="myFunction()">        
         <button class="download" title="Save Canvas" onclick="downloadCanvas()">Download Me!</button>
