@@ -33,9 +33,12 @@ div {
     align-items: center;
     flex-wrap: wrap;
 }
-h2 {
+p {
     color: rgb(255, 255, 255);
-     font-size: 30px;
+    font-size: 30px;
+}
+p:hover{
+   cursor: pointer; 
 }
 button,input {
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
