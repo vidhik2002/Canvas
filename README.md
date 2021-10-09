@@ -9,9 +9,7 @@
 * []() Download your work
 * []() Upload ur work from local PC and edit it
  
-#### Installation
-
- 
+#### Installation 
 1. Clone the repo
 ```sh
 git clone https://github.com/vidhik2002/Canvas.git
@@ -25,3 +23,6 @@ cd Canvas
 npm i
 nodemon index.js
 ```
+![Vidhi's GitHub stats](https://github-readme-stats.vercel.app/api?username=vidhik2002&show_icons=true&theme=tokyonight&include_all_commits=true&count_private=true)
+
+
