@@ -80,36 +80,12 @@
         <div class="dropdown" style="float:left;">
         <button class="dropbtn">Text</button>
         <div class="dropdown-content" style="left:0;">
-            <input type="text" placeholder="Enter text" name="username">
-            <input type="number" placeholder="position-X" name="username">
-            <input type="number" placeholder="position-Y" name="psw">
+            <input type="text" id="textenter" placeholder="Enter text" name="username">
+            <input type="number" id="X" placeholder="position-X" name="username">
+            <input type="number" id="Y" placeholder="position-Y" name="psw">
             <button class="button"  onclick="addtext()">Add text!</button>
         </div>
         </div>
-
-        <!-- <div class="dropdown">
-            <button class="dropbtn">Dropdown 
-            </button>
-            <div class="dropdown-content">
-            <input type="text" placeholder="Enter text" name="username">
-                <input type="number" placeholder="position-X" name="username">
-                <input type="number" placeholder="position-Y" name="psw">
-            </div>
-        </div>  -->
-        <!-- <div class="text-container">
-                <input type="text" placeholder="Enter text" name="username">
-                <input type="number" placeholder="position-X" name="username">
-                <input type="number" placeholder="position-Y" name="psw">
-                <button class="button"  onclick="addtext()">Add text!</button>
-        </div> -->
-        <!-- <button type="button" class="collapsible">Open Collapsible</button>
-        <div class="content">
-            <input type="text" placeholder="Enter text" name="username">
-            <input type="number" placeholder="position-X" name="username">
-            <input type="number" placeholder="position-Y" name="psw">
-            <button class="button"  onclick="addtext()">Add text!</button>
-        </div> -->
-
         
         <input type="file" title="Upload Canvas" id="imageLoader" name="imageLoader"/>
         <canvas id="canvas""></canvas>
@@ -244,56 +220,11 @@
             ctx.stroke();
         };
 
-    
-        // font = '14px sans-serif',
-        // hasInput = false;
-
-        // canvas.onclick = function(e) {
-        //     if (hasInput) return;
-        //     addInput(e.clientX, e.clientY);
-        // }
-
-        // //Function to dynamically add an input box: 
-        // function addInput(x, y) {
-
-        //     var input = document.createElement('input');
-
-        //     input.type = 'text';
-        //     input.style.position = 'fixed';
-        //     input.style.left = (x - 4) + 'px';
-        //     input.style.top = (y - 4) + 'px';
-
-        //     input.onkeydown = handleEnter;
-
-        //     document.body.appendChild(input);
-
-        //     input.focus();
-
-        //     hasInput = true;
-        // }
-
-        // //Key handler for input box:
-        // function handleEnter(e) {
-        //     var keyCode = e.keyCode;
-        //     if (keyCode === 13) {
-        //         drawText(this.value, parseInt(this.style.left, 10), parseInt(this.style.top, 10));
-        //         document.body.removeChild(this);
-        //         hasInput = false;
-        //     }
-        // }
-
-        // //Draw the text onto canvas:
-        // function drawText(txt, x, y) {
-        //     ctx.textBaseline = 'top';
-        //     ctx.textAlign = 'left';
-        //     ctx.font = font;
-        //     ctx.fillText(txt, x - 4, y - 4);
-        // }
 
         function addtext(){
-            var word= "first word"
-            var position_x =20;
-            var position_y =20;
+            var word=  document.getElementById("textenter").value;
+            var position_x =  document.getElementById("X").value;
+            var position_y =  document.getElementById("Y").value;
             ctx.font = "30px Arial";
             console.log(mouse.x,mouse.y)
             ctx.fillText(word,position_x,position_y);// height (10,500) width(10, 1100 )
