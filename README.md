@@ -1,5 +1,5 @@
 # Canvas
-A canvas to draw using HTML5 and Canvas API !
+A Canvas to draw using [HTML5](https://developer.mozilla.org/en-US/docs/Glossary/HTML5) and [Canvas API](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API) !
 
 #### Pre-requisite
 - [Node.js](https://nodejs.org/en/)
@@ -10,6 +10,7 @@ A canvas to draw using HTML5 and Canvas API !
 * []() Choose any Color
 * []() Choose any stroke width
 * []() Background Fill
+* []() Text Area
 * []() Download your work
 * []() Upload ur work from local PC and edit it
  
