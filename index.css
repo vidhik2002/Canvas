@@ -36,6 +36,7 @@ div {
 p {
     color: rgb(255, 255, 255);
     font-size: 30px;
+    font-weight: 800;
 }
 p:hover{
    cursor: pointer; 
@@ -45,7 +46,7 @@ button,input {
     background-color: #7a4caf;
     border: none;
     color: white;
-    padding: 5px 2px;
+    padding: 5px 8px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
