@@ -9,7 +9,6 @@ A Canvas to draw using [HTML5](https://developer.mozilla.org/en-US/docs/Glossary
 
 * []() Choose any Color
 * []() Choose any stroke width
-* []() Background Fill
 * []() Text Area
 * []() Download your work
 * []() Upload ur work from local PC and edit it
