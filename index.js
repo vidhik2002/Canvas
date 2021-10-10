@@ -1,9 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const path = require("path");
-
-const PORT = process.env.PORT || 3000;
-
 const app = express();
 
 app.set("view engine", "ejs");
@@ -15,6 +12,6 @@ app.get("/", (req, res) => {
   res.render("inde.html");
 });
 
-app.listen(3000, () => {
+app.listen(process.env.PORT, () => {
   console.log("listening");
 });
