@@ -26,7 +26,11 @@ cd Canvas
 ```sh
 npm install -g npm@latest
 ```
-4. Run the commands
+4. Add .env file
+```sh
+PORT = <YOUR_PORT>
+```
+5. Run the commands
 ```sh
 npm i
 nodemon index.js
