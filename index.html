@@ -171,7 +171,30 @@
 
         }
 
+        function saveBoard(e) {
+        ctx.save();   
 
+        var imageBase64String = canvas.toDataURL(); // get the base64 string from the canvas context
+
+        if (typeof (localStorage) !== "undefined") {
+            localStorage.setItem('imgCanvas',imageBase64String );
+        } else {
+            document.getElementById("save").innerHTML.dataURL = "Local Storage not supported";
+        }   
+        }
+        function restoreBoard() {
+
+
+            data = localStorage.getItem("imgCanvas");
+
+        if(data){
+            context.drawImage(data, 0, 0); // draw the base64 encoded image on the canvas
+        }else{
+            console.log('No data saved.')
+        }
+
+        }
+       
         window.onload = function() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         canvas.addEventListener('mousedown', startDraw);
@@ -181,4 +204,4 @@
 
     </script> 
 </body>
-</html
+</html>

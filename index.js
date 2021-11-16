@@ -9,7 +9,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
-  res.render("inde.html");
+  res.render("index.html");
 });
 
 app.listen(process.env.PORT, () => {
