@@ -32,7 +32,7 @@ PORT = <YOUR_PORT>
 ```
 5. Run the commands
 ```sh
-npm i
+npm i express
 nodemon index.js
 ```
 
