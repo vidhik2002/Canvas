@@ -13,6 +13,7 @@
         <input type="button" title="Clear Canvas" style="z-index:2; margin-bottom: 5px;" value="Clear" onclick="clearAll()">
         <!-- <input type="color" title="Choose Background Colour" value="color" id="color2" style="z-index:2; margin-bottom: 5px;" onchange="myFunction()">         -->
         <button class="download" title="Save Canvas" onclick="downloadCanvas()">Save</button>
+        <button class="button" style="min-width: 100px" onclick="seecolour()">See colour !</button>
         
         <div class="dropdown" style="float:left;">
         <button class="dropbtn">Text</button>
@@ -36,7 +37,8 @@
         imageLoader.addEventListener('change', handleImage, false);
         var ctx = canvas.getContext("2d");
         let drawing = false
-        
+        var arr = new Array(30);
+
 
         //function for background fill
         function myFunction() {     
@@ -91,14 +93,19 @@
             ctx.strokeStyle = "red";	
             let editor = choose();
             ctx.lineWidth = editor.chooseStroke;
-            ctx.strokeStyle = editor.chooseColor;	
+            ctx.strokeStyle = editor.chooseColor;
+            console.log(editor.chooseColor)	
+            
+            if (!arr.includes(editor.chooseColor)){ 
+            arr.push(editor.chooseColor);
+            }
             ctx.lineCap ="round";
             ctx.lineJoin = 'round';
             ctx.stroke();
             ctx.lineTo(e.clientX, e.clientY);
             ctx.moveTo(e.clientX, e.clientY);
             ctx.beginPath();
-            console.log(mouse.x, mouse.y);
+            
         }
           
 
@@ -194,7 +201,21 @@
         }
 
         }
-       
+        function componentToHex(c) {
+          var hex = c.toString(16);
+          return hex.length == 1 ? "0" + hex : hex;
+        }
+        
+        function rgbToHex(r, g, b) {
+          return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
+        }
+
+        function seecolour(){
+            console.log(arr)
+        }
+
+
+
         window.onload = function() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         canvas.addEventListener('mousedown', startDraw);
