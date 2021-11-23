@@ -11,10 +11,16 @@
         <input title="Choose Colour" type="color" value="color" id="color" style="z-index:2; margin-bottom: 5px;" onchange="choose()">
         <input type="number" min="1" title="Enter Stroke Width" id="stroke" placeholder="Enter stroke size" style="z-index:2; margin-bottom: 5px;" onchange="choose()">
         <input type="button" title="Clear Canvas" style="z-index:2; margin-bottom: 5px;" value="Clear" onclick="clearAll()">
-        <!-- <input type="color" title="Choose Background Colour" value="color" id="color2" style="z-index:2; margin-bottom: 5px;" onchange="myFunction()">         -->
         <button class="download" title="Save Canvas" onclick="downloadCanvas()">Save</button>
-        <button class="button" style="min-width: 100px" onclick="seecolour()">See colour !</button>
         
+        
+        <div class="dropdown" style="float:left;">
+            <button title="See all colours u have used so far!" class="dropbtn" onclick="seecolour()">See colour</button>
+            <div class="dropdown-content" style="left:0;">
+                <div id="boxed" style="background-color: white;width:500px;white-space: initial;word-wrap: break-word"></div>
+        </div>
+        </div>
+
         <div class="dropdown" style="float:left;">
         <button class="dropbtn">Text</button>
         <div class="dropdown-content" style="left:0;">
@@ -37,7 +43,7 @@
         imageLoader.addEventListener('change', handleImage, false);
         var ctx = canvas.getContext("2d");
         let drawing = false
-        var arr = new Array(30);
+        var arr =[];
 
 
         //function for background fill
@@ -201,17 +207,9 @@
         }
 
         }
-        function componentToHex(c) {
-          var hex = c.toString(16);
-          return hex.length == 1 ? "0" + hex : hex;
-        }
-        
-        function rgbToHex(r, g, b) {
-          return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
-        }
-
         function seecolour(){
-            console.log(arr)
+            document.getElementById("boxed").textContent = arr
+        
         }
 
 
